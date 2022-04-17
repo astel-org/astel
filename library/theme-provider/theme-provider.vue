@@ -5,7 +5,7 @@ type Theme = 'light-theme' | 'dark-theme'
 const theme: Theme[] = ['light-theme', 'dark-theme']
 
 export default defineComponent({
-  name: 'AvThemeProvider',
+  name: 'AsThemeProvider',
   props: {
     theme: {
       type: String,

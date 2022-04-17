@@ -5,7 +5,7 @@ import { Sizes } from '../utils/constants/size'
 import { Variants } from '../utils/constants/variant'
 
 export default defineComponent({
-  name: 'AvBadge',
+  name: 'AsBadge',
   props: {
     type: {
       type: String,
@@ -27,12 +27,12 @@ export default defineComponent({
   },
   setup(props) {
     const rootClasses = computed(() => ({
-      [`av-badge--${props.size}`]: props.size,
-      [`av-badge--${props.type}`]: props.type,
-      [`av-badge--outline`]: props.outline,
+      [`as-badge--${props.size}`]: props.size,
+      [`as-badge--${props.type}`]: props.type,
+      [`as-badge--outline`]: props.outline,
       ...(props.variant
         ? {
-            [`av-btn--${props.variant}`]: true,
+            [`as-btn--${props.variant}`]: true,
           }
         : {}),
     }))
@@ -43,7 +43,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <span class="av-badge" :class="rootClasses">
+  <span class="as-badge" :class="rootClasses">
     <slot />
   </span>
 </template>

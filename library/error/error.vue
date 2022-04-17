@@ -3,7 +3,7 @@ import { computed, defineComponent } from 'vue'
 import { Sizes } from '../utils/constants/size'
 
 export default defineComponent({
-  name: 'AvError',
+  name: 'AsError',
   props: {
     size: {
       type: String,
@@ -17,7 +17,7 @@ export default defineComponent({
   },
   setup(props) {
     const rootClasses = computed(() => ({
-      [`av-error--${props.size}`]: props.size,
+      [`as-error--${props.size}`]: props.size,
     }))
 
     return { rootClasses }
@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="av-error" :class="rootClasses">
+  <div class="as-error" :class="rootClasses">
     <div aria-hidden="true">
       <svg
         viewBox="0 0 24 24"
@@ -43,12 +43,12 @@ export default defineComponent({
         <path d="M12 16h.01" stroke="var(--geist-stroke)"></path>
       </svg>
     </div>
-    <div class="av-error--text">
+    <div class="as-error--text">
       <b v-if="$props.label">{{ $props.label }}</b>
       <span
         v-if="$props.label"
         aria-hidden="true"
-        class="av-error--spacer"
+        class="as-error--spacer"
         style="margin-left: 5px"
       ></span>
       <slot></slot>

@@ -56,7 +56,7 @@ export default defineComponent({
       class="h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 4xl:grid-cols-6 5xl:grid-cols-8 gap-4 overflow-y-auto p-4"
     > -->
     <!-- <component-card v-for="i in Array.from(Array(100).keys())" :key="i"></component-card> -->
-    <av-button variant="ghost" color="secondary">adad</av-button>
+    <as-button variant="ghost" color="secondary">adad</as-button>
     <!-- </div> -->
   </section>
 </template>

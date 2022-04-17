@@ -3,7 +3,7 @@ import { computed, defineComponent } from 'vue'
 import { Sizes } from '../utils/constants/size'
 
 export default defineComponent({
-  name: 'AvSpinner',
+  name: 'AsSpinner',
   props: {
     size: {
       type: String,
@@ -13,7 +13,7 @@ export default defineComponent({
   },
   setup(props) {
     const rootClasses = computed(() => ({
-      [`av-spinner--${props.size}`]: props.size,
+      [`as-spinner--${props.size}`]: props.size,
     }))
 
     return { rootClasses }
@@ -22,7 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="av-spinner" :class="rootClasses">
+  <div class="as-spinner" :class="rootClasses">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 2400">
       <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="180">
         <path d="M1200 600V100" />

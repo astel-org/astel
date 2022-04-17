@@ -17,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <av-theme-provider theme="light-theme">
+  <as-theme-provider theme="light-theme">
     <div class="flex flex-col select-none w-screen">
       <Header />
       <main class="flex flex-row">
@@ -26,5 +26,5 @@ export default defineComponent({
         <slot />
       </main>
     </div>
-  </av-theme-provider>
+  </as-theme-provider>
 </template>

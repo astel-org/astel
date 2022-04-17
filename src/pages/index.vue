@@ -24,14 +24,14 @@ export default defineComponent({
     </div>
     <div class="flex items-center justify-center mt-10">
       <NuxtLink to="/components/button">
-        <av-button size="large" type="success" variant="shadow">Get Started</av-button>
+        <as-button size="large" type="success" variant="shadow">Get Started</as-button>
       </NuxtLink>
     </div>
     <div class="text-center max-w-2xl min-w-fit mx-auto mt-44 flex-row flex gap-10">
-      <!-- <av-card v-for="i in [1, 2, 3]" :key="i" shadow class="h-32 w-full">
+      <!-- <as-card v-for="i in [1, 2, 3]" :key="i" shadow class="h-32 w-full">
         <p>Title</p>
         <p>content</p>
-      </av-card> -->
+      </as-card> -->
     </div>
   </section>
 </template>

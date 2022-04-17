@@ -2,15 +2,15 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'AvCard',
+  name: 'AsCard',
   props: {
     hoverable: { type: Boolean, default: false },
     shadow: { type: Boolean, default: false },
   },
   setup(props) {
     const rootClasses = computed(() => ({
-      [`av-card--hoverable`]: props.hoverable,
-      [`av-card--shadow`]: props.shadow,
+      [`as-card--hoverable`]: props.hoverable,
+      [`as-card--shadow`]: props.shadow,
     }))
 
     return { rootClasses }
@@ -19,8 +19,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="av-card" :class="rootClasses">
-    <div class="av-card--content">
+  <div class="as-card" :class="rootClasses">
+    <div class="as-card--content">
       <slot></slot>
     </div>
   </div>

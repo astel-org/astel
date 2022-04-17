@@ -7,7 +7,7 @@ import { Variants } from '../utils/constants/variant'
 import Spinner from '../spinner/spinner.vue'
 
 export default defineComponent({
-  name: 'AvButton',
+  name: 'AsButton',
   components: { Spinner },
   props: {
     disabled: { type: Boolean, default: false },
@@ -37,17 +37,17 @@ export default defineComponent({
   setup(props) {
     const rootClasses = computed(() => [
       {
-        'av-btn--block': props.block,
-        [`av-btn--${props.size}`]: props.size,
-        [`av-btn--${props.type}`]: props.type,
+        'as-btn--block': props.block,
+        [`as-btn--${props.size}`]: props.size,
+        [`as-btn--${props.type}`]: props.type,
         ...(props.variant
           ? {
-              [`av-btn--${props.variant}`]: true,
+              [`as-btn--${props.variant}`]: true,
             }
           : {}),
         ...(props.shape
           ? {
-              [`av-btn--${props.shape}`]: true,
+              [`as-btn--${props.shape}`]: true,
             }
           : {}),
       },
@@ -58,15 +58,15 @@ export default defineComponent({
 </script>
 
 <template>
-  <button class="av-btn" :class="rootClasses" :disabled="disabled || loading">
-    <span v-if="!!$slots.prefix" class="av-btn--prefix"> <slot name="prefix" /></span>
-    <span v-if="loading && !$slots.prefix" class="av-btn--prefix">
+  <button class="as-btn" :class="rootClasses" :disabled="disabled || loading">
+    <span v-if="!!$slots.prefix" class="as-btn--prefix"> <slot name="prefix" /></span>
+    <span v-if="loading && !$slots.prefix" class="as-btn--prefix">
       <Spinner></Spinner>
     </span>
     <span v-if="!!$slots.default">
       <slot />
     </span>
-    <span v-if="!!$slots.suffix" class="av-btn--suffix"> <slot name="suffix" /></span>
+    <span v-if="!!$slots.suffix" class="as-btn--suffix"> <slot name="suffix" /></span>
   </button>
 </template>
 
