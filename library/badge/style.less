@@ -1,0 +1,73 @@
+.av-badge {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--themed-fg, var(--astel-background));
+  background: var(--themed-bg, var(--astel-foreground));
+  border: 1px solid var(--themed-border, var(--themed-bg, var(--astel-foreground)));
+  border-radius: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: inherit;
+  font-feature-settings: 'tnum';
+  font-variant: tabular-nums;
+  text-transform: capitalize;
+  white-space: nowrap;
+
+  // sizes
+  &--small {
+    padding: 3px 7px;
+    font-size: 12px;
+  }
+
+  &--medium {
+    padding: 4px 10px;
+    font-size: 14px;
+  }
+
+  &--large {
+    padding: 3px 10px;
+    font-size: 16px;
+  }
+
+  // colors
+  &--secondary {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-secondary);
+    --themed-border: var(--astel-secondary);
+  }
+
+  &--success {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-success);
+    --themed-border: var(--astel-success);
+  }
+
+  &--error {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-error);
+    --themed-border: var(--astel-error);
+  }
+
+  &--warning {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-warning);
+    --themed-border: var(--astel-warning);
+  }
+
+  &--violet {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-violet);
+    --themed-border: var(--astel-violet);
+  }
+
+  &--pink {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-pink);
+    --themed-border: var(--astel-pink);
+  }
+
+  &--outline {
+    color: var(--themed-bg);
+    background: transparent;
+  }
+}

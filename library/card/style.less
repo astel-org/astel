@@ -1,0 +1,26 @@
+.av-card {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid var(--accents-2);
+
+  &--hoverable {
+    &:hover {
+      box-shadow: var(--shadow-medium);
+    }
+  }
+
+  &--shadow {
+    box-shadow: var(--shadow-small);
+    border-color: transparent;
+  }
+
+  &--content {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+}

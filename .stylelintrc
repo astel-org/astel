@@ -1,0 +1,8 @@
+{
+  "extends": ["stylelint-config-recommended", "stylelint-config-standard", "stylelint-config-prettier"],
+  "ignoreFiles": ["node_modules/**/*"],
+  "rules": {
+    "string-quotes": "single"
+  },
+  "customSyntax": "postcss-less"
+}

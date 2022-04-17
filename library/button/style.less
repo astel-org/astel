@@ -1,0 +1,309 @@
+.set-ghost (@bg-color, @hover-bg-color) {
+  background: none;
+  border-color: transparent;
+  color: @bg-color;
+
+  --lighten-color: var(--bg-ghost);
+
+  background-image: linear-gradient(to right, var(--lighten-color), var(--lighten-color));
+
+  &:hover {
+    background-color: @hover-bg-color;
+  }
+}
+
+.set-shadow (@outline-color) {
+  box-shadow: var(--shadow-small);
+  border-color: @outline-color;
+
+  &:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+    color: var(--themed-fg);
+    background: var(--themed-bg);
+    border-color: @outline-color;
+
+    --themed-border: var(--themed-bg);
+  }
+
+  &:active {
+    box-shadow: var(--shadow-small);
+    transform: none;
+  }
+}
+
+.av-btn {
+  border-radius: var(--astel-radius);
+  color: var(--themed-fg, var(--astel-background));
+  background: var(--themed-bg, var(--astel-foreground));
+  border: 1px solid var(--themed-border, var(--astel-foreground));
+  font-weight: 500;
+  padding: 0 var(--astel-gap-half);
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: border-color, background, color, transform, box-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+  cursor: pointer;
+  user-select: none;
+
+  &--prefix {
+    display: flex;
+    margin-right: var(--astel-gap-quarter);
+  }
+
+  &--suffix {
+    display: flex;
+    margin-left: var(--astel-gap-quarter);
+  }
+
+  &--block {
+    width: 100%;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &--small {
+    font-size: var(--astel-form-small-font);
+    height: var(--astel-form-small-height);
+    line-height: var(--astel-form-line-height);
+
+    --shape-width: var(--astel-form-small-height);
+
+    svg {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  &--medium {
+    font-size: var(--astel-form-font);
+    line-height: var(--astel-form-line-height);
+    height: var(--astel-form-height);
+
+    --shape-width: var(--astel-form-height);
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &--large {
+    height: var(--astel-form-large-height);
+    font-size: var(--astel-form-large-font);
+    line-height: var(--astel-form-large-line-height);
+
+    --shape-width: var(--astel-form-large-height);
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &--circle {
+    width: var(--shape-width);
+    border-radius: 100%;
+    padding: 0;
+
+    span {
+      margin: 0;
+    }
+  }
+
+  &--primary {
+    --themed-bg: var(--astel-foreground);
+    --themed-fg: var(--astel-background);
+    --themed-border: var(--accents-8);
+
+    &:hover {
+      background: var(--astel-background);
+      color: var(--astel-foreground);
+      border-color: var(--accents-8);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--primary&--shadow {
+    .set-shadow(var(--astel-foreground));
+  }
+
+  &--primary&--ghost {
+    .set-ghost(var(--astel-foreground), var(--astel-secondary));
+  }
+
+  &--secondary {
+    --themed-bg: var(--astel-background);
+    --themed-fg: var(--astel-secondary);
+    --themed-border: var(--accents-2);
+
+    &:hover {
+      background: var(--astel-background);
+      color: var(--astel-foreground);
+      border-color: var(--astel-foreground);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--secondary&--shadow {
+    .set-shadow(var(--astel-background));
+  }
+
+  &--secondary&--ghost {
+    .set-ghost(var(--astel-secondary), var(--themed-fg));
+  }
+
+  &--success {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-success);
+    --themed-border: var(--astel-success);
+
+    &:hover {
+      box-shadow: none;
+      background: transparent;
+      color: var(--themed-bg);
+
+      --themed-border: var(--themed-bg);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--success&--shadow {
+    .set-shadow(var(--astel-success));
+  }
+
+  &--success&--ghost {
+    .set-ghost(var(--astel-success), var(--themed-bg));
+  }
+
+  &--error {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-error);
+    --themed-border: var(--astel-error);
+
+    &:hover {
+      box-shadow: none;
+      background: transparent;
+      color: var(--themed-bg);
+
+      --themed-border: var(--themed-bg);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--error&--shadow {
+    .set-shadow(var(--astel-error));
+  }
+
+  &--error&--ghost {
+    .set-ghost(var(--astel-error), var(--themed-bg));
+  }
+
+  &--warning {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-warning);
+    --themed-border: var(--astel-warning);
+
+    &:hover {
+      box-shadow: none;
+      background: transparent;
+      color: var(--themed-bg);
+
+      --themed-border: var(--themed-bg);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--warning&--shadow {
+    .set-shadow(var(--astel-warning));
+  }
+
+  &--warning&--ghost {
+    .set-ghost(var(--astel-warning), var(--themed-bg));
+  }
+
+  &--alert {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-pink);
+    --themed-border: var(--astel-pink);
+
+    &:hover {
+      box-shadow: none;
+      background: transparent;
+      color: var(--themed-bg);
+
+      --themed-border: var(--themed-bg);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--alert&--shadow {
+    .set-shadow(var(--astel-pink));
+  }
+
+  &--alert&--ghost {
+    .set-ghost(var(--astel-pink), var(--themed-bg));
+  }
+
+  &--violet {
+    --themed-fg: #fff;
+    --themed-bg: var(--astel-violet);
+    --themed-border: var(--astel-violet);
+
+    &:hover {
+      box-shadow: none;
+      background: transparent;
+      color: var(--themed-bg);
+
+      --themed-border: var(--themed-bg);
+    }
+
+    &:active {
+      background: var(--accents-2);
+    }
+  }
+
+  &--violet&--shadow {
+    .set-shadow(var(--astel-violet));
+  }
+
+  &--violet&--ghost {
+    .set-ghost(var(--astel-violet), var(--themed-bg));
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    background: var(--accents-1);
+    color: var(--accents-3);
+    border-color: var(--accents-2);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+}
