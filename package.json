@@ -35,8 +35,8 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "dev": "nuxi dev",
-    "start": "node .output/server/index.mjs",
+    "dev": "nuxi dev --open",
+    "start": "nuxi preview",
     "build:docs": "nuxi build",
     "build:lib": "astel build",
     "prepublishOnly": "astel collect && astel build && astel types",
