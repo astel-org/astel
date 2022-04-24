@@ -1,4 +1,4 @@
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 import _Badge from './badge.vue'
 
 export const Badge = withInstall(_Badge)

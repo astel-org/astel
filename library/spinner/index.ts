@@ -1,4 +1,4 @@
-import { withInstall } from '../utils/with-install'
+import { withInstall } from '../utils'
 import _Spinner from './spinner.vue'
 
 export const Spinner = withInstall(_Spinner)
