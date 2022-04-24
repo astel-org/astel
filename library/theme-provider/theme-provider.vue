@@ -20,8 +20,8 @@ export default defineComponent({
     return {
       normalize,
       commonVars: `:root{ ${styleToString(commonVars)} }`,
-      lightStyle: `.light-theme{ ${styleToString(lightTheme)} }`,
-      darkStyle: `.dark-theme{ ${styleToString(darkTheme)} }`,
+      lightStyle: `:root,.light-theme{ ${styleToString(lightTheme)} }`,
+      darkStyle: `:root.dark-theme{ ${styleToString(darkTheme)} }`,
     }
   },
 })
