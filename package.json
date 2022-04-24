@@ -39,6 +39,7 @@
     "start": "nuxi preview",
     "build:docs": "nuxi build",
     "build:lib": "astel build",
+    "generate": "nuxi generate",
     "prepublishOnly": "astel collect && astel build && astel types",
     "release": "yarn publish",
     "lint:eslint": "eslint src/**/*.{ts,vue}",
@@ -57,7 +58,7 @@
     "postcss-less": "^6.0.0"
   },
   "devDependencies": {
-    "@astel/cli": "^0.0.2",
+    "@astel/cli": "^0.0.4",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@kolhe/eslint-config": "^1.1.2",
@@ -65,8 +66,8 @@
     "@types/node": "^17.0.25",
     "@types/prettier": "^2.6.0",
     "@types/prismjs": "^1.26.0",
-    "autoprefixer": "^10.4.4",
-    "eslint": "^8.13.0",
+    "autoprefixer": "^10.4.5",
+    "eslint": "^8.14.0",
     "husky": "^7.0.4",
     "nuxt": "^3.0.0-rc.1",
     "postcss": "^8.4.12",
@@ -83,7 +84,7 @@
     "vite": "^2.9.5",
     "vue": "^3.2.33",
     "vue-prism-component": "^2.0.0",
-    "vue-tsc": "^0.34.9"
+    "vue-tsc": "^0.34.10"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --fix",
