@@ -14,12 +14,18 @@ export default defineComponent({
       default: 'light-theme',
       validator: (value: Theme) => Object.values(theme).includes(value),
     },
+    colors: {
+      type: Object,
+      default: commonVars,
+    },
   },
 
-  setup() {
+  setup(props) {
+    const mergedCommonVars = Object.assign(commonVars, props.colors)
+
     return {
       normalize,
-      commonVars: `:root{ ${styleToString(commonVars)} }`,
+      commonVars: `:root{ ${styleToString(mergedCommonVars)} }`,
       lightStyle: `:root,.light-theme{ ${styleToString(lightTheme)} }`,
       darkStyle: `:root.dark-theme{ ${styleToString(darkTheme)} }`,
     }
