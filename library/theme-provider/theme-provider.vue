@@ -35,14 +35,14 @@ export default defineComponent({
 
 <template>
   <main>
-    <teleport to="head">
+    <Teleport to="head">
       <component :is="'style'" type="text/css">
         {{ normalize }}
         {{ commonVars }}
         {{ lightStyle }}
         {{ darkStyle }}
       </component>
-    </teleport>
+    </Teleport>
 
     <slot></slot>
   </main>
