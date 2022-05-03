@@ -27,7 +27,7 @@ export default defineComponent({
       normalize,
       commonVars: `:root{ ${styleToString(mergedCommonVars)} }`,
       lightStyle: `:root,.light-theme{ ${styleToString(lightTheme)} }`,
-      darkStyle: `:root.dark-theme{ ${styleToString(darkTheme)} }`,
+      darkStyle: `.dark-theme{ ${styleToString(darkTheme)} }`,
     }
   },
 })
@@ -35,12 +35,14 @@ export default defineComponent({
 
 <template>
   <main>
-    <component :is="'style'">
-      {{ normalize }}
-      {{ commonVars }}
-      {{ lightStyle }}
-      {{ darkStyle }}
-    </component>
+    <teleport to="head">
+      <component :is="'style'" type="text/css">
+        {{ normalize }}
+        {{ commonVars }}
+        {{ lightStyle }}
+        {{ darkStyle }}
+      </component>
+    </teleport>
 
     <slot></slot>
   </main>
