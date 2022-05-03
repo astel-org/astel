@@ -20,6 +20,6 @@ export { default as Card } from './card'
 export { default as Error } from './error'
 export { default as Spinner } from './spinner'
 export { default as ThemeProvider } from './theme-provider'
-export * from './utils/composables'
+export * from './utils'
 
 export default { install }
