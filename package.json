@@ -53,6 +53,7 @@
     "vue": "^3.2.33"
   },
   "dependencies": {
+    "@astel/icons": "^0.0.3",
     "@pinia/nuxt": "^0.1.8",
     "pinia": "^2.0.13",
     "postcss-custom-properties": "^12.1.7",

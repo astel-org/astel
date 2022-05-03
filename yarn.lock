@@ -41,6 +41,11 @@
     vue "^3.2.33"
     vue-tsc "^0.34.10"
 
+"@astel/icons@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@astel/icons/-/icons-0.0.3.tgz#985f333a14af63c7440459879faa0637199ebf8d"
+  integrity sha512-4pPTV0mU26A99muoKlN73YQQnl9iTrbQDEQ8fT+Ga9rT5wYq178ZdbGOwWuTbQ44jCUFVMdLtwzCFww/ey9YSg==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"
