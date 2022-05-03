@@ -14,10 +14,10 @@
   resolved "https://registry.yarnpkg.com/@antfu/utils/-/utils-0.5.1.tgz#7eb6764878adb715daff20019e5a15fd63d93342"
   integrity sha512-8Afo0+xvYe1K8Wm4xHTymfTkpzy36aaqDvhXIayUwl+mecMG9Xzl3XjXa6swG6Bk8FBeQ646RyvmsYt6+2Be9g==
 
-"@astel/cli@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@astel/cli/-/cli-0.0.7.tgz#e61411ca5f8c51b5c16763ce60bb6f53eae837d8"
-  integrity sha512-subLzGAWv63dMR8YEyz1yQ1f+XdBWrlavYbS8ccCEm6gIndFNu3FW0TmF4giNYoIa9CZ2QtBt+xgeUjMsC+9fw==
+"@astel/cli@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@astel/cli/-/cli-0.0.8.tgz#fdff00bc2a92a7c00c7c1be504519e38308de9d3"
+  integrity sha512-VS4mcr0OOcbqgEJ1RUTLXxSZauG6M8rAgsedn5jBfcciCIXyYkLWY5uyXaCy76eZ5pzL9BBXt7qAhjhLn6u1Kg==
   dependencies:
     "@vitejs/plugin-vue" "^2.3.1"
     clean-css "^5.3.0"

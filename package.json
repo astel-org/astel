@@ -59,7 +59,7 @@
     "postcss-less": "^6.0.0"
   },
   "devDependencies": {
-    "@astel/cli": "^0.0.7",
+    "@astel/cli": "^0.0.8",
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@kolhe/eslint-config": "^1.1.3",
