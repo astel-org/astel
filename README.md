@@ -9,7 +9,7 @@
  A Sleek & Minimal UI component library for Vue 3
 </h2>
 
-**Astel** is a set of accessible and composable Vue 3 components to build modern websites and applications.
+**Astel** is a set of accessible and composable Vue 3 components for building modern websites and applications.
 
 ### Table of Contents
 
