@@ -26,7 +26,7 @@ export const useTheme = () => {
   watch(theme, (pre) => {
     if (typeof window === 'undefined' || !window.localStorage) return
     localStorage.setItem('theme', pre)
-    const root = document.querySelector('body') as HTMLElement
+    const root = document.querySelector('html') as HTMLElement
     root.setAttribute('class', theme.value)
   })
 
