@@ -1,8 +1,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-
+import { Github, Moon, Sun } from '@astel/icons'
+import { useTheme } from 'astel'
 export default defineComponent({
+  components: { Github, Moon, Sun },
   setup() {
+    const { theme, changeTheme } = useTheme()
     const navigationItems = [
       { title: 'Home', link: '/' },
       { title: 'Guide', link: '/' },
@@ -11,48 +14,45 @@ export default defineComponent({
     ]
     return {
       navigationItems,
+      theme,
+      changeTheme,
     }
   },
 })
 </script>
 
 <template>
-  <header class="h-16 flex bg-white justify-between border-b w-full">
-    <NuxtLink to="/" class="flex items-center pl-5 justify-center">
-      <img src="/logo-dark.svg" alt="astel ui logo" class="md:h-10 h-8" />
-      <span class="ml-4 text-gray-900 leading-relaxed font-semibold text-lg md:text-xl">
-        Astel UI
-      </span>
+  <header
+    class="h-16 fixed flex justify-between bg-[color:var(--astel-background)] border-b-[1px] border-b-[color:var(--accents-2)] w-full px-6"
+  >
+    <NuxtLink to="/" class="flex items-center justify-center">
+      <img v-if="theme === 'light-theme'" src="/logo-dark.svg" alt="astel ui logo" class="h-8" />
+      <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-8" />
+      <span class="ml-4 leading-relaxed font-semibold text-lg md:text-xl"> Astel UI </span>
     </NuxtLink>
     <div class="hidden md:flex items-center gap-x-4 text-sm cursor-pointer">
       <NuxtLink
         v-for="item in navigationItems"
         :key="item.title"
-        class="text-gray-900 leading-relaxed hover:bg-black duration-300 hover:bg-opacity-10 rounded px-3 py-1.5"
+        class="leading-relaxed duration-300 hover:bg-opacity-10 rounded px-3 py-1.5"
         :to="item.link"
       >
         {{ item.title }}
       </NuxtLink>
     </div>
+    <div class="flex flex-row justify-center items-center space-x-6">
+      <button v-if="theme !== 'dark-theme'" @click="changeTheme">
+        <Moon />
+      </button>
+      <button v-else @click="changeTheme">
+        <Sun />
+      </button>
 
-    <NuxtLink
-      to="https://github.com/astel-org/astel"
-      target="_blank"
-      class="flex border-l items-center justify-center flex-row w-14 hover:bg-gray-100"
-    >
-      <svg
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        shape-rendering="geometricPrecision"
-        class="w-5 h-auto stroke-gray-500"
-      >
-        <path
-          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
-        ></path>
-      </svg>
-    </NuxtLink>
+      <button>
+        <NuxtLink to="https://github.com/astel-org/astel" target="_blank">
+          <Github />
+        </NuxtLink>
+      </button>
+    </div>
   </header>
 </template>
