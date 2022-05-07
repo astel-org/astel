@@ -17,8 +17,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <as-theme-provider theme="light-theme">
-    <div class="flex flex-col select-none w-screen">
+  <as-theme-provider>
+    <div class="flex flex-col w-screen">
       <Header />
       <main class="flex flex-row">
         <Sidebar v-if="path !== '/'" />
