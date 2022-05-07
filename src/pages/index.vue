@@ -13,19 +13,19 @@ export default defineComponent({
       {
         title: 'Light Weight',
         description: 'Light weight UI components, each components is <2kb Brotli',
-        icon: Feather,
+        icon: markRaw(Feather),
         link: '',
       },
       {
         title: 'Clean',
         description: 'Astel UI provides clean and minimal ui components',
-        icon: Zap,
+        icon: markRaw(Zap),
         link: '',
       },
       {
         title: 'OSS',
         description: 'Astel is Open-source and available freely under MIT license',
-        icon: Github,
+        icon: markRaw(Github),
         link: 'https://github.com/astel-org/astel',
       },
     ])
@@ -33,9 +33,6 @@ export default defineComponent({
     return {
       features,
       currentPage,
-      Feather,
-      Github,
-      Zap,
     }
   },
 })
