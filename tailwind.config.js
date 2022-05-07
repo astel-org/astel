@@ -7,4 +7,11 @@ module.exports = {
     `pages/**/*.vue`,
     `plugins/**/*.{js,ts}`,
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter'],
+      },
+    },
+  },
 }
