@@ -21,8 +21,7 @@ export default defineComponent({
     <div class="flex flex-col w-screen">
       <Header />
       <main class="flex flex-row">
-        <Sidebar v-if="path !== '/'" />
-
+        <Sidebar />
         <slot />
       </main>
     </div>
