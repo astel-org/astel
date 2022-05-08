@@ -1,20 +1,25 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { Github, Moon, Sun } from '@astel/icons'
+import { Github, Menu, Moon, Sun } from '@astel/icons'
 import { useTheme } from 'astel'
+import { useSidebarStore } from '../../store/sidebar'
 export default defineComponent({
-  components: { Github, Moon, Sun },
+  components: { Github, Moon, Sun, Menu },
   setup() {
+    const sidebar = useSidebarStore()
     const { theme, changeTheme } = useTheme()
+
     const navigationItems = [
       { title: 'Home', link: '/' },
       { title: 'Guide', link: '/' },
       { title: 'Components', link: '/components/button' },
       { title: 'Composables', link: '/' },
     ]
+
     return {
       navigationItems,
       theme,
+      sidebar,
       changeTheme,
     }
   },
@@ -23,7 +28,7 @@ export default defineComponent({
 
 <template>
   <header
-    class="h-16 fixed flex justify-between bg-[color:var(--astel-background)] border-b-[1px] border-b-[color:var(--accents-2)] w-full px-6"
+    class="h-16 z-30 fixed flex justify-between bg-[color:var(--astel-background)] border-b-[1px] border-b-[color:var(--accents-2)] w-full px-6"
   >
     <NuxtLink to="/" class="flex items-center justify-center">
       <img v-if="theme === 'light-theme'" src="/logo-dark.svg" alt="astel ui logo" class="h-8" />
@@ -41,17 +46,26 @@ export default defineComponent({
       </NuxtLink>
     </div>
     <div class="flex flex-row justify-center items-center space-x-6">
-      <button v-if="theme !== 'dark-theme'" @click="changeTheme">
+      <button v-if="theme !== 'dark-theme'" class="hidden md:inline-block" @click="changeTheme">
         <Moon />
       </button>
-      <button v-else @click="changeTheme">
+      <button v-else class="hidden md:inline-block" @click="changeTheme">
         <Sun />
       </button>
 
-      <button>
+      <button class="hidden md:inline-block">
         <NuxtLink to="https://github.com/astel-org/astel" target="_blank">
           <Github />
         </NuxtLink>
+      </button>
+      <button
+        v-if="!sidebar.isVisible"
+        class="md:hidden"
+        type="button"
+        title="Show collections"
+        @click="sidebar.toggleSidebar"
+      >
+        <Menu />
       </button>
     </div>
   </header>
