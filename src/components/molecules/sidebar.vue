@@ -1,85 +1,112 @@
 <script lang="ts">
 import { Transition, defineComponent } from 'vue'
+import { X } from '@astel/icons'
 import { useSidebarStore } from '../../store/sidebar'
 import Search from '../atoms/search.vue'
+import Dropdown from '../atoms/dropdown.vue'
+
+export interface SidebarItems {
+  title: string
+  link: string
+  category?: string
+  children?: SidebarItems[] | null
+}
 
 export default defineComponent({
-  components: { Search, Transition },
-
+  components: { Search, Transition, X, Dropdown },
   setup() {
     const sidebar = useSidebarStore()
+
+    const sidebarItems: SidebarItems[] = [
+      {
+        title: 'Home',
+        link: '/',
+        children: [],
+      },
+      {
+        title: 'Guide',
+        link: '/guide',
+        children: [
+          {
+            title: 'Introduction',
+            link: '',
+          },
+          {
+            title: 'Installation',
+            link: '',
+          },
+          {
+            title: 'Usage',
+            link: '',
+          },
+        ],
+      },
+      {
+        title: 'Components',
+        link: '/components',
+        children: [
+          {
+            title: 'Introduction',
+            link: '',
+          },
+          {
+            title: 'Installation',
+            link: '',
+          },
+          {
+            title: 'Usage',
+            link: '',
+          },
+        ],
+      },
+    ]
+
     return {
       sidebar,
+      sidebarItems,
     }
   },
 })
 </script>
 
 <template>
-  <Transition name="slide-fade">
-    <aside
-      :class="`flex-col ${
-        sidebar.isVisible ? 'flex absolute' : 'hidden'
-      }  bg-white w-full sm:border-r sm:w-[320px] shrink-0 h-[calc(100vh-68px)]`"
-    >
-      <header class="h-14 flex shrink-0 border-b">
-        <div class="flex items-center justify-between flex-1 pl-5">
-          <span class="text-gray-800 font-semibold"> Components </span>
-
-          <button
-            type="button"
-            title="Show collections"
-            class="w-14 h-14 relative sm:hidden border-l"
-            @click="sidebar.toggleSidebar"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              class="w-6 h-auto absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+  <Teleport to="body">
+    <Transition name="slide-fade">
+      <aside
+        v-if="sidebar.isVisible"
+        class="flex-col z-50 flex w-full sm:border-r sm:w-[320px] h-screen fixed bg-[color:var(--astel-background)]"
+      >
+        <header class="h-16 flex shrink-0 border-b">
+          <div class="flex items-center justify-between flex-1 px-6">
+            <span class="font-semibold"> Components </span>
+            <button
+              type="button"
+              title="Show Drawer"
+              class="sm:hidden"
+              @click="sidebar.toggleSidebar"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </header>
-      <Search />
-      <nav class="flex flex-col overflow-y-scroll h-full">
-        <section v-for="(value, key, index) in [1, 2, 3, 4]" :key="index">
-          <NuxtLink
-            v-for="(link, idx) in value"
-            :key="idx"
-            :to="`/components/${link}`"
-            class="cursor-pointer hover:bg-gray-50 h-14 justify-between text-left border-b items-center flex px-5"
-            @click="sidebar.toggleSidebar"
-          >
-            <span class="text-gray-800">{{ link }}</span>
-            <span
-              class="inline-block text-xs text-gray-400 bg-gray-50 border border-gray-300 rounded pointer-events-none px-2 py-1"
-            >
-              {{ key }}
-            </span>
-          </NuxtLink>
-        </section>
-      </nav>
-    </aside>
-  </Transition>
+              <X />
+            </button>
+          </div>
+        </header>
+        <Search />
+        <nav class="flex flex-col overflow-y-scroll h-full">
+          <div v-for="(item, index) in sidebarItems" :key="index">
+            <Dropdown :items="item.children" :title="`${item.title}`"> </Dropdown>
+          </div>
+        </nav>
+      </aside>
+    </Transition>
+  </Teleport>
 </template>
+
 <style scoped>
 .slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+  transition: all 0.3s;
 }
 
 .slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.3s;
 }
 
 .slide-fade-enter-from,
