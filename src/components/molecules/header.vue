@@ -30,26 +30,34 @@ export default defineComponent({
   <header
     class="h-16 z-30 fixed flex justify-between bg-[color:var(--astel-background)] border-b-[1px] border-b-[color:var(--accents-2)] w-full px-6"
   >
+    <!-- App title -->
     <NuxtLink to="/" class="flex items-center justify-center">
       <img v-if="theme === 'light-theme'" src="/logo-dark.svg" alt="astel ui logo" class="h-8" />
       <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-8" />
-      <span class="ml-4 leading-relaxed font-semibold text-lg md:text-xl"> Astel UI </span>
+      <span class="ml-4 leading-relaxed hidden md:inline-flex font-semibold text-lg md:text-xl">
+        Astel UI
+      </span>
     </NuxtLink>
+
+    <!-- Navigation items  -->
     <div class="hidden md:flex items-center gap-x-4 text-sm cursor-pointer">
-      <NuxtLink
+      <p
         v-for="item in navigationItems"
         :key="item.title"
-        class="leading-relaxed duration-300 hover:bg-opacity-10 rounded px-3 py-1.5"
-        :to="item.link"
+        class="leading-relaxed duration-200 rounded px-3 py-1.5 hover:bg-[color:var(--accents-2)]"
       >
-        {{ item.title }}
-      </NuxtLink>
+        <NuxtLink :to="item.link">
+          {{ item.title }}
+        </NuxtLink>
+      </p>
     </div>
-    <div class="flex flex-row justify-center items-center space-x-6">
-      <button v-if="theme !== 'dark-theme'" class="hidden md:inline-block" @click="changeTheme">
+
+    <!-- Icons  -->
+    <div class="flex flex-row justify-center items-center space-x-4 md:space-x-6">
+      <button v-if="theme !== 'dark-theme'" @click="changeTheme">
         <Moon />
       </button>
-      <button v-else class="hidden md:inline-block" @click="changeTheme">
+      <button v-else @click="changeTheme">
         <Sun />
       </button>
 
