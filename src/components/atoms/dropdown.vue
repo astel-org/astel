@@ -27,7 +27,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <ul class="rounded-md py-2">
+  <ul class="py-4 border-b-[1px] border-[color:var(--accents-2)] cursor-pointer">
     <li class="list-none flex flex-row justify-between w-full px-6" @click="toggleShow">
       <span class="font-medium"> {{ title }}</span>
       <ChevronRight
@@ -37,18 +37,19 @@ export default defineComponent({
       />
     </li>
 
-    <li class="list-none">
-      <Transition>
-        <ul
-          v-if="showMenu"
-          class="duration-200 px-6 py-4 transition-all mt-2 bg-[color:var(--accents-1)]"
-          :class="[showMenu ? 'border-t' : '']"
-        >
-          <li v-for="child in $props?.items" :key="child.title" class="py-1">
-            {{ child.title }}
-          </li>
-        </ul></Transition
+    <li v-if="showMenu && $props.items?.length > 0" class="list-none">
+      <ul
+        class="duration-200 px-6 py-4 -mb-4 transition-all mt-4 bg-[color:var(--accents-1)]"
+        :class="[showMenu ? 'border-t-[10px] border-[color:var(--accents-4)]' : '']"
       >
+        <li
+          v-for="child in $props?.items"
+          :key="child.title"
+          class="py-2 text-[color:var(--accents-5)]"
+        >
+          <NuxtLink :to="child.link"> {{ child.title }}</NuxtLink>
+        </li>
+      </ul>
     </li>
   </ul>
 </template>
