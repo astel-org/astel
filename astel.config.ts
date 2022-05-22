@@ -7,8 +7,8 @@ export default defineAstelConfig({
     entry: 'library/index.ts',
     emptyOutDir: true,
     library: [
-      { format: 'esm', outputDir: 'dist/es', summary: true },
-      { format: 'umd', outputDir: 'dist/lib', summary: true },
+      { format: 'esm', outputDir: 'dist/es', summary: true, minify: ['whitespace'] },
+      { format: 'umd', outputDir: 'dist/lib', summary: true, minify: ['whitespace'] },
     ],
   },
 })
