@@ -1,7 +1,7 @@
 <template>
   <div class="h-14 flex flex-row justify-between items-center bg-[color:var(--accents-2)]">
     <input
-      filter=""
+      filter="Search here"
       placeholder="Filter …"
       class="focus-on-key w-full h-14 bg-transparent pl-5 pr-20"
     />
