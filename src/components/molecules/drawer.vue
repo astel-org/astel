@@ -42,7 +42,7 @@ const drawerItems: DrawerItems[] = [
     <Transition name="slide-fade">
       <div
         v-if="isVisible"
-        class="flex-col top-0 z-50 flex w-full md:w-[300px] border-r md:border-none h-screen fixed md:static bg-[color:var(--astel-background)]"
+        class="flex-col md:hidden top-0 z-50 flex w-full md:w-[300px] border-r md:border-none h-screen fixed md:static bg-[color:var(--astel-background)]"
       >
         <section class="h-16 flex shrink-0 border-b-[1px] border-[color:var(--accents-2)]">
           <div class="flex items-center justify-between flex-1 px-6">
