@@ -1,31 +1,22 @@
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
 import Header from '../components/molecules/header.vue'
-import Sidebar from '../components/molecules/sidebar.vue'
 import { useRoute } from '#imports'
+import Drawer from '~~/src/components/molecules/drawer.vue'
 
-export default defineComponent({
-  components: { Header, Sidebar },
-  async setup() {
-    const route = useRoute()
+const route = useRoute()
 
-    const path = computed(() => route.path)
-
-    return { path }
-  },
-})
+const isHome = computed(() => route.path !== '/')
 </script>
 
 <template>
   <ClientOnly>
     <as-theme-provider>
-      <div class="flex flex-col w-screen">
-        <Header />
-        <section class="flex flex-row">
-          <Sidebar />
-          <slot />
-        </section>
-      </div>
+      <Header />
+      <section class="max-w-screen-lg mx-auto">
+        <Drawer v-if="isHome" />
+        <slot />
+      </section>
     </as-theme-provider>
   </ClientOnly>
 </template>
