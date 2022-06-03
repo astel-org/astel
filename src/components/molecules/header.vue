@@ -1,80 +1,74 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { defineComponent } from 'vue'
-import { Github, Menu, Moon, Sun } from '@astel/icons'
+import { Equal, Github, Moon, Sun } from '@astel/icons'
 import { useTheme } from 'astel'
-import { useSidebarStore } from '../../store/sidebar'
-export default defineComponent({
-  components: { Github, Moon, Sun, Menu },
-  setup() {
-    const sidebar = useSidebarStore()
-    const { theme, changeTheme } = useTheme()
+import { useDrawerStore } from '~~/src/store/drawer'
 
-    const navigationItems = [
-      { title: 'Home', link: '/' },
-      { title: 'Guide', link: '/' },
-      { title: 'Components', link: '/components/button' },
-      { title: 'Composables', link: '/' },
-    ]
-
-    return {
-      navigationItems,
-      theme,
-      sidebar,
-      changeTheme,
-    }
-  },
-})
+const { toggleDrawer, isVisible } = useDrawerStore()
+const { theme, changeTheme } = useTheme()
 </script>
 
 <template>
-  <header
-    class="h-16 z-30 fixed flex justify-between bg-[color:var(--astel-background)] border-b-[1px] border-b-[color:var(--accents-2)] w-full px-6"
-  >
-    <!-- App title -->
-    <NuxtLink to="/" class="flex items-center justify-center">
-      <img v-if="theme === 'light-theme'" src="/logo-dark.svg" alt="astel ui logo" class="h-8" />
-      <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-8" />
-      <span class="ml-4 leading-relaxed hidden md:inline-flex font-semibold text-lg md:text-xl">
-        Astel UI
-      </span>
-    </NuxtLink>
-
-    <!-- Navigation items  -->
-    <div class="hidden md:flex items-center gap-x-4 text-sm cursor-pointer">
-      <p
-        v-for="item in navigationItems"
-        :key="item.title"
-        class="leading-relaxed duration-200 rounded px-3 py-1.5 hover:bg-[color:var(--accents-2)]"
-      >
-        <NuxtLink :to="item.link">
-          {{ item.title }}
+  <header class="w-full border-b-[1px] h-16 border-b-[color:var(--accents-2)]">
+    <div
+      class="flex flex-row xl:px-0 px-6 h-full items-center z-40 max-w-screen-lg mx-auto justify-between w-full bg-[color:var(--astel-background)]"
+    >
+      <!-- App title -->
+      <div>
+        <NuxtLink to="/" class="flex items-center justify-center">
+          <img
+            v-if="theme === 'light-theme'"
+            src="/logo-dark.svg"
+            alt="astel ui logo"
+            class="h-8"
+          />
+          <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-8" />
+          <span class="ml-4 leading-relaxed hidden md:inline-flex font-semibold text-lg md:text-xl">
+            Astel UI
+          </span>
         </NuxtLink>
-      </p>
-    </div>
+      </div>
 
-    <!-- Icons  -->
-    <div class="flex flex-row justify-center items-center space-x-4 md:space-x-6">
-      <button v-if="theme !== 'dark-theme'" @click="changeTheme">
-        <Moon />
-      </button>
-      <button v-else @click="changeTheme">
-        <Sun />
-      </button>
-
-      <button class="hidden md:inline-block">
-        <NuxtLink to="https://github.com/astel-org/astel" target="_blank">
-          <Github />
+      <!-- Navigation items  -->
+      <div class="hidden md:flex items-center gap-x-4 text-sm cursor-pointer">
+        <NuxtLink
+          to="/"
+          active-class="font-semibold"
+          class="leading-relaxed duration-200 rounded px-3 py-1.5 hover:bg-[color:var(--accents-2)]"
+        >
+          Home
         </NuxtLink>
-      </button>
-      <button
-        v-if="!sidebar.isVisible"
-        class="md:hidden"
-        type="button"
-        title="Show collections"
-        @click="sidebar.toggleSidebar"
-      >
-        <Menu />
-      </button>
+        <ContentNavigation v-slot="{ navigation }">
+          <NuxtLink
+            v-for="link of navigation"
+            :key="link._path"
+            :to="link._path"
+            active-class="font-semibold"
+            class="leading-relaxed duration-200 rounded px-3 py-1.5 hover:bg-[color:var(--accents-2)]"
+          >
+            {{ link.navTitle || link.title }}
+          </NuxtLink>
+        </ContentNavigation>
+      </div>
+
+      <!-- Icons  -->
+      <div class="flex flex-row justify-center items-center space-x-4 md:space-x-6">
+        <button v-if="theme !== 'dark-theme'" @click="changeTheme">
+          <Moon />
+        </button>
+        <button v-else @click="changeTheme">
+          <Sun />
+        </button>
+
+        <button class="hidden md:inline-block">
+          <NuxtLink to="https://github.com/astel-org/astel" target="_blank">
+            <Github />
+          </NuxtLink>
+        </button>
+        <button class="md:hidden" type="button" title="Show collections" @click="toggleDrawer">
+          <Equal />
+        </button>
+      </div>
     </div>
   </header>
 </template>

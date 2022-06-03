@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 import { ChevronRight } from '@astel/icons'
 import type { PropType } from 'vue'
-import type { SidebarItems } from '../molecules/sidebar.vue'
+import { DrawerItems } from '~~/src/components/molecules/drawer.vue'
 export default defineComponent({
   components: { ChevronRight },
   props: {
@@ -10,7 +10,7 @@ export default defineComponent({
       type: String,
     },
     items: {
-      type: Array as PropType<SidebarItems[]>,
+      type: Array as PropType<DrawerItems[]>,
     },
   },
   setup() {
@@ -40,7 +40,7 @@ export default defineComponent({
     <li v-if="showMenu && $props.items?.length > 0" class="list-none">
       <ul
         class="duration-200 px-6 py-4 -mb-4 transition-all mt-4 bg-[color:var(--accents-1)]"
-        :class="[showMenu ? 'border-t-[10px] border-[color:var(--accents-4)]' : '']"
+        :class="[showMenu ? 'border-t-[1px] border-[color:var(--accents-2)]' : '']"
       >
         <li
           v-for="child in $props?.items"

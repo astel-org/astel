@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 
-export const useSidebarStore = defineStore('sidebar', {
+export const useDrawerStore = defineStore('drawer', {
   state: () => {
     return {
-      isVisible: false,
+      isVisible: true,
     }
   },
   actions: {
-    toggleSidebar() {
+    toggleDrawer() {
       this.isVisible = !this.isVisible
     },
   },
