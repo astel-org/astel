@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import Header from '../components/molecules/header.vue'
 import { useRoute } from '#imports'
-import Drawer from '~~/src/components/molecules/drawer.vue'
+import Sidebar from '~~/src/components/molecules/sidebar.vue'
 
 const route = useRoute()
 
@@ -13,10 +13,13 @@ const isHome = computed(() => route.path === '/')
   <ClientOnly>
     <as-theme-provider>
       <Header />
-      <section class="max-w-screen-lg mx-auto">
-        <Drawer v-if="!isHome" />
-        <slot />
-      </section>
+      <main class="max-w-screen-lg mx-auto mt-8">
+        <Drawer />
+        <section class="flex flex-row justify-between">
+          <Sidebar v-if="!isHome" class="w-[300px]" />
+          <div class="w-full"><slot /></div>
+        </section>
+      </main>
     </as-theme-provider>
   </ClientOnly>
 </template>
