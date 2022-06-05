@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, defineComponent } from 'vue'
+import { computed } from 'vue'
 import Header from '../components/molecules/header.vue'
 import { useRoute } from '#imports'
 import Drawer from '~~/src/components/molecules/drawer.vue'
