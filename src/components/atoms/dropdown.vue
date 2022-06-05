@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue'
 import { ChevronRight } from '@astel/icons'
 import type { PropType } from 'vue'
-import { DrawerItems } from '~~/src/components/molecules/drawer.vue'
+import type { DrawerItems } from '~~/src/components/molecules/drawer.vue'
 export default defineComponent({
   components: { ChevronRight },
   props: {

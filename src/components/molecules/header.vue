@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { defineComponent } from 'vue'
 import { Equal, Github, Moon, Sun } from '@astel/icons'
 import { useTheme } from 'astel'
 import { useDrawerStore } from '~~/src/store/drawer'
 
-const { toggleDrawer, isVisible } = useDrawerStore()
+const { toggleDrawer } = useDrawerStore()
 const { theme, changeTheme } = useTheme()
 </script>
 
