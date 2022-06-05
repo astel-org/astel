@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   },
   content: {
     navigation: {
-      fields: ['navTitle'],
+      fields: ['pageTitle', 'groupTitle'],
     },
     highlight: {
       theme: 'dracula',
