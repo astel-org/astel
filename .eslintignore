@@ -3,3 +3,4 @@ es
 libs
 dist
 dev/dist
+src/content/**/*
