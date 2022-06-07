@@ -5,6 +5,8 @@ import { useDrawerStore } from '~~/src/store/drawer'
 
 const { toggleDrawer } = useDrawerStore()
 const { theme, changeTheme } = useTheme()
+
+const currentRoute = useRoute()
 </script>
 
 <template>
@@ -22,7 +24,7 @@ const { theme, changeTheme } = useTheme()
             class="h-8"
           />
           <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-8" />
-          <span class="ml-4 leading-relaxed hidden md:inline-flex font-semibold text-lg md:text-xl">
+          <span class="ml-4 leading-relaxed hidden md:inline-flex font-medium text-lg md:text-xl">
             Astel UI
           </span>
         </NuxtLink>
@@ -32,20 +34,21 @@ const { theme, changeTheme } = useTheme()
       <div class="hidden md:flex items-center gap-x-4 text-sm cursor-pointer">
         <NuxtLink
           to="/"
-          active-class="font-semibold"
+          :class="[currentRoute.path === '/' ? 'font-semibold' : 'font-normal']"
           class="leading-relaxed duration-200 rounded px-3 py-1.5 hover:bg-[color:var(--accents-2)]"
         >
           Home
         </NuxtLink>
+
         <ContentNavigation v-slot="{ navigation }">
           <NuxtLink
             v-for="link of navigation"
             :key="link._path"
-            :to="link._path"
-            active-class="font-semibold"
+            :to="`${link?.children?.length > 0 ? link.children[0]._path as string : link._path as string}`"
+            :class="[currentRoute.path.includes(link._path) ? 'font-semibold' : 'font-normal']"
             class="leading-relaxed duration-200 rounded px-3 py-1.5 hover:bg-[color:var(--accents-2)]"
           >
-            {{ link.navTitle || link.title }}
+            {{ link.title }}
           </NuxtLink>
         </ContentNavigation>
       </div>
