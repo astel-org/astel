@@ -39,7 +39,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="flex flex-col justify-center items-center">
+  <main class="flex flex-col justify-center items-center">
     <div class="text-center w-full mt-44">
       <h1 class="text-6xl font-bold">Astel</h1>
       <p class="text-2xl mt-4 text-[color:var(--accents-5)] font-medium">
@@ -52,7 +52,7 @@ export default defineComponent({
       </NuxtLink>
     </div>
 
-    <div class="text-center mt-32 px-6 flex flex-row w-full gap-8">
+    <div class="text-center mt-32 flex flex-row w-full gap-8">
       <NuxtLink v-for="(feature, index) in features" :key="index" :to="feature.link" class="flex-1">
         <as-card hoverable shadow>
           <div class="flex flex-row items-center p-2">
@@ -67,5 +67,5 @@ export default defineComponent({
         </as-card>
       </NuxtLink>
     </div>
-  </section>
+  </main>
 </template>
