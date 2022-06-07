@@ -34,7 +34,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <main>
+  <div>
     <Teleport to="head">
       <component :is="'style'" type="text/css">
         {{ normalize }}
@@ -43,7 +43,6 @@ export default defineComponent({
         {{ darkStyle }}
       </component>
     </Teleport>
-
     <slot></slot>
-  </main>
+  </div>
 </template>
