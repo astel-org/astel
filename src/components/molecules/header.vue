@@ -10,9 +10,9 @@ const currentRoute = useRoute()
 </script>
 
 <template>
-  <header class="w-full border-b-[1px] h-16 border-b-[color:var(--accents-2)]">
+  <header class="w-full border-b-[1px] h-16 border-b-[color:var(--accents-2)] px-6">
     <div
-      class="flex flex-row xl:px-0 px-6 h-full items-center z-40 max-w-screen-lg mx-auto justify-between w-full bg-[color:var(--astel-background)]"
+      class="flex flex-row h-full items-center z-40 max-w-screen-lg mx-auto justify-between w-full bg-[color:var(--astel-background)]"
     >
       <!-- App title -->
       <div>
