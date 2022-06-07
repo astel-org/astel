@@ -1,58 +1,24 @@
 <script lang="ts" setup>
-const route = useRoute()
-const navigationRoutes = ref()
-
-onMounted(async () => {
-  navigationRoutes.value = await getSidebarRoutes()
-})
-
-watch(route, async () => {
-  navigationRoutes.value = await getSidebarRoutes()
-})
-
-const getSidebarRoutes = async () => {
-  const r = await queryContent()
-    .where({ _path: new RegExp(route.path.split('/')[1], 'i') })
-    .only(['_path', 'title', 'pageTitle', 'groupTitle'])
-    .sort({ groupTitle: -1 })
-    .find()
-
-  const ObjMap = {}
-
-  r.forEach((element) => {
-    const makeKey = element.groupTitle
-    if (!ObjMap[makeKey]) {
-      ObjMap[makeKey] = []
-    }
-
-    ObjMap[makeKey].push({
-      path: element._path,
-      pageTitle: element.pageTitle,
-    })
-  })
-  console.log(ObjMap)
-  return ObjMap
-}
+const { groupedRoutes } = useNavigation()
 </script>
 
 <template>
   <aside class="flex-col flex">
     <nav>
       <ol>
-        <li
-          v-for="(value, key) of navigationRoutes"
-          :key="key"
-          class="flex flex-col items-start justify-start pt-4"
-        >
-          <p class="font-medium uppercase text-sm">{{ key }}</p>
+        <li v-for="(value, key) of groupedRoutes" :key="key" class="mb-8">
+          <p class="font-medium text-[color:var(--accents-3)] tracking-wider uppercase text-xs">
+            {{ key }}
+          </p>
 
           <NuxtLink
             v-for="(item, index) in value"
             :key="index"
             :to="item.path"
-            class="font-normal text-base"
+            active-class="text-[color:var(--astel-success)] font-semibold"
+            class="capitalize my-3 tracking-wide text-base block"
           >
-            <p>{{ item.pageTitle }}</p>
+            {{ item.pageTitle }}
           </NuxtLink>
         </li>
       </ol>
