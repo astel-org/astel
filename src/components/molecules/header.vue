@@ -10,7 +10,7 @@ const currentRoute = useRoute()
 </script>
 
 <template>
-  <header class="w-full border-b-[1px] h-16 border-b-[color:var(--accents-2)] px-6">
+  <header class="w-full fixed top-0 border-b-[1px] h-16 border-b-[color:var(--accents-2)] px-6">
     <div
       class="flex flex-row h-full items-center z-40 max-w-screen-lg mx-auto justify-between w-full bg-[color:var(--astel-background)]"
     >
@@ -21,11 +21,11 @@ const currentRoute = useRoute()
             v-if="theme === 'light-theme'"
             src="/logo-dark.svg"
             alt="astel ui logo"
-            class="h-8"
+            class="h-6"
           />
-          <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-8" />
+          <img v-else src="/logo-light.svg" alt="astel ui logo" class="h-6" />
           <span class="ml-4 leading-relaxed hidden md:inline-flex font-medium text-lg md:text-xl">
-            Astel UI
+            Astel
           </span>
         </NuxtLink>
       </div>

@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useDrawerStore = defineStore('drawer', {
   state: () => {
     return {
-      isVisible: true,
+      isVisible: false,
     }
   },
   actions: {

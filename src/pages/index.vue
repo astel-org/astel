@@ -39,8 +39,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <main class="flex flex-col justify-center items-center">
-    <div class="text-center w-full mt-44">
+  <main class="flex flex-col justify-center items-center w-full">
+    <div class="text-center w-full mt-24 md:mt-44">
       <h1 class="text-6xl font-bold">Astel</h1>
       <p class="text-2xl mt-4 text-[color:var(--accents-5)] font-medium">
         A sleek and minimal Vue 3 UI component library
@@ -52,8 +52,32 @@ export default defineComponent({
       </NuxtLink>
     </div>
 
-    <div class="text-center mt-32 flex flex-row w-full gap-8">
-      <NuxtLink v-for="(feature, index) in features" :key="index" :to="feature.link" class="flex-1">
+    <!-- <div class="text-center mt-32 grid w-full">
+      <NuxtLink
+        v-for="(feature, index) in features"
+        :key="index"
+        :to="feature.link"
+        class="grid grid-cols-3"
+      >
+        <as-card hoverable shadow>
+          <div class="flex flex-row items-center p-2">
+            <span class="border-[1px] border-[color:var(--accents-2)] rounded-full px-2 py-3">
+              <component :is="feature.icon" class="mx-1" />
+            </span>
+            <p class="text-xl font-semibold mx-3">{{ feature.title }}</p>
+          </div>
+          <p class="text-left p-2 text-[color:var(--accents-6)]">
+            {{ feature.description }}
+          </p>
+         
+        </as-card>
+      </NuxtLink>
+    </div> -->
+
+    <div
+      class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 text-center mt-32 pb-16 w-full"
+    >
+      <NuxtLink v-for="(feature, index) in features" :key="index" :to="feature.link">
         <as-card hoverable shadow>
           <div class="flex flex-row items-center p-2">
             <span class="border-[1px] border-[color:var(--accents-2)] rounded-full px-2 py-3">

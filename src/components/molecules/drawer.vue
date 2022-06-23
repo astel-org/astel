@@ -11,7 +11,7 @@ export interface DrawerItems {
   children?: DrawerItems[] | null
 }
 
-const { isVisible, toggleDrawer } = useDrawerStore()
+const { isVisible, toggleDrawer } = toRefs(useDrawerStore())
 
 const drawerItems: DrawerItems[] = [
   { title: 'Home', link: '/', children: [] },
@@ -34,15 +34,16 @@ const drawerItems: DrawerItems[] = [
     ],
   },
 ]
+
+const { groupedRoutes } = await useNavigation()
 </script>
 
 <template>
-  <ClientOnly>
-    <!-- <Teleport to="body"> -->
+  <Teleport to="body">
     <Transition name="slide-fade">
-      <div
+      <aside
         v-if="isVisible"
-        class="flex-col md:hidden top-0 z-50 flex w-full border-r h-screen fixed bg-[color:var(--astel-background)]"
+        class="flex-col md:hidden top-0 z-50 flex w-full h-screen fixed bg-[color:var(--astel-background)]"
       >
         <section class="h-16 flex shrink-0 border-b-[1px] border-[color:var(--accents-2)]">
           <div class="flex items-center justify-between flex-1 px-6">
@@ -54,14 +55,14 @@ const drawerItems: DrawerItems[] = [
         </section>
         <Search />
         <nav class="flex flex-col overflow-y-scroll h-full">
-          <div v-for="(item, index) in drawerItems" :key="index">
-            <Dropdown :items="item.children" :title="`${item.title}`"> </Dropdown>
+          <div v-for="(item, index) in groupedRoutes" :key="index">
+            <!-- <Dropdown :items="item.children" :title="`${item.title}`"> </Dropdown> -->
+            {{ item }}
           </div>
         </nav>
-      </div>
+      </aside>
     </Transition>
-    <!-- </Teleport> -->
-  </ClientOnly>
+  </Teleport>
 </template>
 
 <style scoped>

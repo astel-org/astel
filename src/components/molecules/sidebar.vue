@@ -3,7 +3,7 @@ const { groupedRoutes } = useNavigation()
 </script>
 
 <template>
-  <aside class="flex-col flex">
+  <aside class="flex-col md:flex hidden">
     <nav>
       <ol>
         <li v-for="(value, key) of groupedRoutes" :key="key" class="mb-8">
