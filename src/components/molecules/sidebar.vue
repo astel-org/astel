@@ -1,24 +1,24 @@
 <script lang="ts" setup>
-const { groupedRoutes } = useNavigation()
+const { currentRoutes } = useNavigation()
 </script>
 
 <template>
-  <aside class="flex-col md:flex hidden">
+  <aside v-if="currentRoutes" class="flex-col md:flex hidden">
     <nav>
       <ol>
-        <li v-for="(value, key) of groupedRoutes" :key="key" class="mb-8">
+        <li v-for="(route, index) of currentRoutes.children" :key="index" class="mb-8">
           <p class="font-medium text-[color:var(--accents-3)] tracking-wider uppercase text-xs">
-            {{ key }}
+            {{ route.title }}
           </p>
 
           <NuxtLink
-            v-for="(item, index) in value"
+            v-for="(item, index) in route.children"
             :key="index"
-            :to="item.path"
+            :to="item.link"
             active-class="text-[color:var(--astel-success)] font-semibold"
             class="capitalize my-3 tracking-wide text-base block"
           >
-            {{ item.pageTitle }}
+            {{ item.title }}
           </NuxtLink>
         </li>
       </ol>

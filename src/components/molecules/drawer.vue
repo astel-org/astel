@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { X } from '@astel/icons'
 import { useDrawerStore } from '../../store/drawer'
-import Search from '../atoms/search.vue'
 import Dropdown from '../atoms/dropdown.vue'
 
 export interface DrawerItems {
@@ -12,30 +11,7 @@ export interface DrawerItems {
 }
 
 const { isVisible, toggleDrawer } = toRefs(useDrawerStore())
-
-const drawerItems: DrawerItems[] = [
-  { title: 'Home', link: '/', children: [] },
-  {
-    title: 'Guide',
-    link: '/guide',
-    children: [
-      { title: 'Introduction', link: '/guide/introduction' },
-      { title: 'Installation', link: '/guide/installation' },
-      { title: 'Bundle Size', link: '/guide/bundle-size' },
-      { title: 'Colors', link: '/guide/colors' },
-      { title: 'Theme', link: '/guide/theme' },
-    ],
-  },
-  {
-    title: 'Components',
-    link: '/components',
-    children: [
-      { title: 'Introduction', link: '' },
-      { title: 'Installation', link: '' },
-      { title: 'Usage', link: '' },
-    ],
-  },
-]
+const { fullRoutes } = useNavigation()
 </script>
 
 <template>
@@ -53,11 +29,10 @@ const drawerItems: DrawerItems[] = [
             </button>
           </div>
         </section>
-        <Search />
+
         <nav class="flex flex-col overflow-y-scroll h-full">
-          <div v-for="(item, index) in drawerItems" :key="index">
-            <Dropdown :items="item.children" :title="`${item.title}`"> </Dropdown>
-            <!-- {{ item }} -->
+          <div v-for="(item, index) in fullRoutes" :key="index">
+            <Dropdown :item="item" />
           </div>
         </nav>
       </aside>

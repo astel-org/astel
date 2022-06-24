@@ -1,45 +1,94 @@
-export interface RouteItem {
-  path: string
-  pageTitle: string
-}
+const routes: NavigationRoutes[] = [
+  {
+    title: 'Guide',
+    children: [
+      {
+        title: 'Getting Started',
+        children: [
+          {
+            title: 'Introduction',
+            link: '/guide/introduction',
+          },
+          {
+            title: 'Installation',
+            link: '/guide/installation',
+          },
+        ],
+      },
+      {
+        title: 'Customization',
+        children: [
+          {
+            title: 'Colors',
+            link: '/guide/colors',
+          },
+          {
+            title: 'Themes',
+            link: '/guide/theme',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Components',
+    children: [
+      {
+        title: 'Atoms',
+        children: [
+          {
+            title: 'Button',
+            link: '/components/button',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Composables',
+    children: [
+      {
+        title: 'Common',
+        children: [
+          {
+            title: 'useTheme',
+            link: '/composables/introduction',
+          },
+        ],
+      },
+      {
+        title: 'Utilities',
+        children: [
+          {
+            title: 'useCopy',
+            link: '/composables/colors',
+          },
+        ],
+      },
+    ],
+  },
+]
 
-export interface GroupedRoutes {
-  [key: string]: RouteItem[]
+export interface NavigationRoutes {
+  title: string
+  link?: string
+  children?: NavigationRoutes[]
 }
 
 export const useNavigation = () => {
   const route = useRoute()
-  const groupedRoutes = ref<GroupedRoutes>()
+  const currentRoutes = ref<NavigationRoutes>()
 
   onMounted(async () => {
-    groupedRoutes.value = await getSidebarRoutes()
+    currentRoutes.value = getCurrentRoutes()
   })
 
   watch(route, async () => {
-    groupedRoutes.value = await getSidebarRoutes()
+    currentRoutes.value = getCurrentRoutes()
   })
 
-  const getSidebarRoutes = async () => {
-    const groupedRoutes = {} as GroupedRoutes
+  const getCurrentRoutes = () =>
+    routes.find((r) => r.title.toLowerCase() === route.path.split('/')[1])
 
-    const queriedRoutes = await queryContent()
-      .where({ _path: new RegExp(route.path.split('/')[1], 'i') })
-      .only(['_path', 'title', 'pageTitle', 'groupTitle'])
-      .find()
-
-    queriedRoutes.forEach((route) => {
-      const grouptitleKey = route.groupTitle
-      if (!groupedRoutes[grouptitleKey]) {
-        groupedRoutes[grouptitleKey] = []
-      }
-
-      groupedRoutes[grouptitleKey].push({
-        path: route._path,
-        pageTitle: route.pageTitle,
-      })
-    })
-    return groupedRoutes
-  }
-
-  return { groupedRoutes }
+  return { currentRoutes, fullRoutes: routes }
 }

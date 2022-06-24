@@ -32,9 +32,6 @@ export default defineNuxtConfig({
     astel: fileURLToPath(new URL('./library', import.meta.url)),
   },
   content: {
-    navigation: {
-      fields: ['pageTitle', 'groupTitle'],
-    },
     highlight: {
       theme: 'github-light',
     },
