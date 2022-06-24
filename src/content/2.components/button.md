@@ -28,7 +28,7 @@ Large
 #code
 
 ```js
-as-button{size="small"}
+<as-button type="success">Hello</as-button>
 ```
 
 ::
@@ -54,7 +54,7 @@ Large
 #code
 
 ```js
-as-button{size="small"}
+<as-button type="success">Hello</as-button>
 ```
 
 ::

@@ -15,7 +15,7 @@ const isHome = computed(() => route.path === '/')
     <as-theme-provider>
       <Header />
       <Drawer />
-      <div class="w-full px-6 pt-16">
+      <div class="w-full px-4 pt-16">
         <div class="mt-8 flex flex-row max-w-screen-lg mx-auto">
           <Sidebar v-if="!isHome" class="w-[250px]" />
           <slot />

@@ -36,7 +36,7 @@ export default defineNuxtConfig({
       fields: ['pageTitle', 'groupTitle'],
     },
     highlight: {
-      theme: 'github-dark',
+      theme: 'github-light',
     },
   },
   modules: ['@nuxt/content'],

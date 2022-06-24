@@ -19,9 +19,11 @@ const drawerItems: DrawerItems[] = [
     title: 'Guide',
     link: '/guide',
     children: [
-      { title: 'Introduction', link: '' },
-      { title: 'Installation', link: '' },
-      { title: 'Usage', link: '' },
+      { title: 'Introduction', link: '/guide/introduction' },
+      { title: 'Installation', link: '/guide/installation' },
+      { title: 'Bundle Size', link: '/guide/bundle-size' },
+      { title: 'Colors', link: '/guide/colors' },
+      { title: 'Theme', link: '/guide/theme' },
     ],
   },
   {
@@ -34,8 +36,6 @@ const drawerItems: DrawerItems[] = [
     ],
   },
 ]
-
-const { groupedRoutes } = await useNavigation()
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const { groupedRoutes } = await useNavigation()
         class="flex-col md:hidden top-0 z-50 flex w-full h-screen fixed bg-[color:var(--astel-background)]"
       >
         <section class="h-16 flex shrink-0 border-b-[1px] border-[color:var(--accents-2)]">
-          <div class="flex items-center justify-between flex-1 px-6">
+          <div class="flex items-center justify-between flex-1 px-4">
             <span class="font-semibold"> Astel </span>
             <button type="button" title="Show Drawer" class="sm:hidden" @click="toggleDrawer">
               <X />
@@ -55,9 +55,9 @@ const { groupedRoutes } = await useNavigation()
         </section>
         <Search />
         <nav class="flex flex-col overflow-y-scroll h-full">
-          <div v-for="(item, index) in groupedRoutes" :key="index">
-            <!-- <Dropdown :items="item.children" :title="`${item.title}`"> </Dropdown> -->
-            {{ item }}
+          <div v-for="(item, index) in drawerItems" :key="index">
+            <Dropdown :items="item.children" :title="`${item.title}`"> </Dropdown>
+            <!-- {{ item }} -->
           </div>
         </nav>
       </aside>

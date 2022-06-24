@@ -28,7 +28,7 @@ export default defineComponent({
 
 <template>
   <ul class="py-4 border-b-[1px] border-[color:var(--accents-2)] cursor-pointer">
-    <li class="list-none flex flex-row justify-between w-full px-6" @click="toggleShow">
+    <li class="list-none flex flex-row justify-between w-full px-4" @click="toggleShow">
       <span class="font-medium"> {{ title }}</span>
       <ChevronRight
         v-if="$props?.items?.length > 0"
