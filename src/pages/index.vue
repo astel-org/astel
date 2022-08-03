@@ -78,7 +78,7 @@ export default defineComponent({
       class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 text-center mt-32 pb-16 w-full"
     >
       <NuxtLink v-for="(feature, index) in features" :key="index" :to="feature.link">
-        <as-card hoverable shadow>
+        <as-card hoverable>
           <div class="flex flex-row items-center p-2">
             <span class="border-[1px] border-[color:var(--accents-2)] rounded-full px-2 py-3">
               <component :is="feature.icon" class="mx-1" />

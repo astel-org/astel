@@ -48,13 +48,13 @@ export default defineComponent({
           <span class="font-medium text-[color:var(--accents-3)] tracking-wider uppercase text-xs">
             {{ route.title }}
           </span>
-          <div class="ml-2 border-l space-y-2 text-sm">
+          <div class="ml-2 border-l border-l-[color:var(--accents-2)] space-y-2 text-sm">
             <NuxtLink
               v-for="(item, index) in route.children"
               :key="index"
               :to="item.link"
               active-class="text-[color:var(--astel-success)] font-semibold"
-              class="ml-4 capitalize tracking-wide text-base block"
+              class="ml-4 capitalize tracking-wide text-base block text-[color:var(--accents-6)]"
               @click="toggleDrawer"
             >
               {{ item.title }}
